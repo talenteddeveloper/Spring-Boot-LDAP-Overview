@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add User</title>
+</head>
+<body>
+
+<form th:action="@{/addUser}" th:object="${ldapUser}" method="post">
+    <label>Username: <input type="text" th:field="*{username}"/></label><br/>
+    <label>Password: <input type="password" th:field="*{password}"/></label><br/>
+    <label>Common Name: <input type="text" th:field="*{cn}"/></label><br/>
+    <label>Surname Name: <input type="text" th:field="*{sn}"/></label><br/>
+    <input type="submit" value="Add User"/>
+</form>
+
+</body>
+</html>
