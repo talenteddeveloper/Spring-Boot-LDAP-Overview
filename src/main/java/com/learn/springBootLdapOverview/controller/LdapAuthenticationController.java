@@ -1,12 +1,21 @@
 package com.learn.springBootLdapOverview.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.learn.springBootLdapOverview.model.LdapUser;
+import com.learn.springBootLdapOverview.service.LdapService;
+
 @RestController
 public class LdapAuthenticationController {
+
+	@Autowired
+	private LdapService ldapService;
 
 	@GetMapping("/")
 	public String index() {
@@ -23,5 +32,9 @@ public class LdapAuthenticationController {
 		return "UserDetails: " + userName + "\n Account Non Expired: " + accNonExpired;
 	}
 
+	@GetMapping("/getAllUsers")
+	public List<LdapUser> getAllUsers() {
+		return ldapService.getAllUsers();
+	}
+	
 }
-
