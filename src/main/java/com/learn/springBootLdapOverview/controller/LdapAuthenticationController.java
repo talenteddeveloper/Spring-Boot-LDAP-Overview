@@ -36,5 +36,10 @@ public class LdapAuthenticationController {
 	public List<LdapUser> getAllUsers() {
 		return ldapService.getAllUsers();
 	}
-	
+
+	@GetMapping("/getUserById/{uid}")
+	public String getUserById(@PathVariable String uid) {
+
+		return ldapService.getUserById(uid);
+	}
 }

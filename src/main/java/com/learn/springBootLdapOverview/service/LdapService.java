@@ -2,6 +2,8 @@ package com.learn.springBootLdapOverview.service;
 
 import java.util.List;
 
+import javax.naming.NamingException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ldap.core.AttributesMapper;
 import org.springframework.ldap.core.LdapTemplate;
@@ -32,5 +34,25 @@ public class LdapService {
                     return ldapuser;
 				});
 	}
+	
+	public String getUserById(String uid) {
+        List<String> usernames = ldapTemplate.search(
+                BASE_DN,
+                "(uid=" + uid + ")",
+                (AttributesMapper<String>) attrs -> {
+                    try {
+                        return (String) attrs.get("sn").get();
+                    } catch (NamingException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+        );
+
+        if (!usernames.isEmpty()) {
+            return usernames.get(0);
+        } else {
+            return null; // User not found
+        }
+    }
 
 }
