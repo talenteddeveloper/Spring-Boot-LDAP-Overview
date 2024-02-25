@@ -3,10 +3,11 @@ package com.learn.springBootLdapOverview.service;
 import java.util.List;
 
 import javax.naming.NamingException;
-
+import javax.naming.Name;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ldap.core.AttributesMapper;
 import org.springframework.ldap.core.LdapTemplate;
+import org.springframework.ldap.support.LdapNameBuilder;
 import org.springframework.stereotype.Service;
 
 import com.learn.springBootLdapOverview.model.LdapUser;
@@ -54,5 +55,10 @@ public class LdapService {
             return null; // User not found
         }
     }
-
+	public void deleteUser(String uid) {
+		Name userDn= LdapNameBuilder.newInstance(BASE_DN)
+				.add("uid",uid)
+				.build();
+		ldapTemplate.unbind(userDn);
+	}
 }

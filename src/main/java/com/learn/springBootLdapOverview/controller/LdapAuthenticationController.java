@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.learn.springBootLdapOverview.model.LdapUser;
@@ -41,5 +42,11 @@ public class LdapAuthenticationController {
 	public String getUserById(@PathVariable String uid) {
 
 		return ldapService.getUserById(uid);
+	}
+	
+	@GetMapping("/deleteUser/{uid}")
+	public String deleteUser(@PathVariable String uid) {
+		ldapService.deleteUser(uid);
+		return "User Deleted";
 	}
 }
