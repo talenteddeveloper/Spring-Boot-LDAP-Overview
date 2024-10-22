@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.learn.springBootLdapOverview.model.LdapUser;
 import com.learn.springBootLdapOverview.service.LdapService;
 
+//  udemy ldap course link : https://www.udemy.com/share/10c2jr3@gXg1kvyeuFFQapv4E2gw0HJSi9gzWhNBOhYpOZd6zC04bgBjd4p9a3r-yUv8fEzoEg==/
 @RestController
 public class LdapAuthenticationController {
 
