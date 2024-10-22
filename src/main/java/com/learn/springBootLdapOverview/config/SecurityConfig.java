@@ -12,6 +12,9 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.ldap.LdapBindAuthenticationManagerFactory;
 import org.springframework.security.web.SecurityFilterChain;
 
+// youtube playlist ldap: https://www.youtube.com/playlist?list=PLyzY2l387AlO0KMY2Ydkzyxj1NgwtvR64
+//  udemy ldap course link : https://www.udemy.com/share/10c2jr3@gXg1kvyeuFFQapv4E2gw0HJSi9gzWhNBOhYpOZd6zC04bgBjd4p9a3r-yUv8fEzoEg==/
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
